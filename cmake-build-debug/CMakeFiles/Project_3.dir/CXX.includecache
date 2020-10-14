@@ -1,0 +1,58 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/tyler/Desktop/CS124/Project 3/AVLTree.h
+memory
+-
+iostream
+-
+
+C:/Users/tyler/Desktop/CS124/Project 3/BinarySearchTree.h
+memory
+-
+iostream
+-
+
+C:/Users/tyler/Desktop/CS124/Project 3/Node.h
+
+C:/Users/tyler/Desktop/CS124/Project 3/SplayTree.h
+memory
+-
+
+C:/Users/tyler/Desktop/CS124/Project 3/Weather.h
+fstream
+-
+iomanip
+-
+string
+-
+vector
+-
+
+C:/Users/tyler/Desktop/CS124/Project 3/main.cpp
+AVLTree.h
+C:/Users/tyler/Desktop/CS124/Project 3/AVLTree.h
+BinarySearchTree.h
+C:/Users/tyler/Desktop/CS124/Project 3/BinarySearchTree.h
+Node.h
+C:/Users/tyler/Desktop/CS124/Project 3/Node.h
+SplayTree.h
+C:/Users/tyler/Desktop/CS124/Project 3/SplayTree.h
+Weather.h
+C:/Users/tyler/Desktop/CS124/Project 3/Weather.h
+algorithm
+-
+chrono
+-
+iostream
+-
+random
+-
+vector
+-
+
