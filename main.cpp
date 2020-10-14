@@ -13,7 +13,7 @@ using namespace std;
 int main() {
 
     unsigned random_num = chrono::system_clock::now().time_since_epoch().count();
-    const int number_tree = 100;
+    const int number_tree = 101;
     vector<int> numbers_vector;
     vector<MarsWeather> weather;
     getWeather("mars-weather.csv", weather);
@@ -22,7 +22,7 @@ int main() {
     BinarySearchTree<int>(BinarySearchTree);
 
     // Adding 1 - 100 to Binary Tree
-    for (int i = 0; i < number_tree; ++i) {
+    for (int i = 1; i < number_tree; ++i) {
         BinarySearchTree.add(i);
     }
 
@@ -48,10 +48,8 @@ int main() {
 
 
 
-    // Print Binary Tree content
-    //cout << BinarySearchTree.find(0) << "\n";
-    //cout << BinarySearchTree.find(101) << "\n";
-    //cout << BinarySearchTree.find(95) << "\n";
+    // Test to find depth of Node, should just be same as content
+    // Linear line along right side of tree (always adding larger number from loop population).
     cout << BinarySearchTree.find(20, 0) << endl;
 
     // Testing AVL Tree methods
@@ -62,10 +60,9 @@ int main() {
         AVLTree.add(i);
     }
 
-    const int *depth = 0;
+    // Test to find depth of Node, debug has 20 at depth of 6
     cout << AVLTree.find(20, 0) << endl;
 
-    //cout << AVLTree.find(8) << "\n";
 
     //SplayTree<int>(SplayTree);
 
