@@ -1,6 +1,7 @@
 #ifndef PROJECT3STARTER_BINARYSEARCHTREE_H
 #define PROJECT3STARTER_BINARYSEARCHTREE_H
 
+#include <iostream>
 #include <memory>
 #include <iostream>
 
@@ -52,6 +53,7 @@ private:
         }
 
         std::cout << depth << std::endl;
+
         // If code reaches here, c == n->value. Node found!
         return true;
     }
