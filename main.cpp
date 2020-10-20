@@ -177,6 +177,10 @@ void avlTree() {
     }
     file_avl_sequence.close();
 
+    /**
+     * Random Search
+     */
+
     // Adding 1 - 100 to vector
     for (int i = 1; i < number_tree; ++i) {
         shuffled_vector.push_back(i);
@@ -201,13 +205,12 @@ void avlTree() {
     }
     file_avl_random.close();
 
-    for (int i = 0; i < weather_vector.size(); ++i) {
-        avl_tree_weather.add(weather_vector[i]);
-    }
+    /**
+     * Own Type
+     */
 
     for (int i = 0; i < weather_vector.size(); ++i) {
-        avl_tree_weather.find(weather_vector[i], depth);
-        cout << avl_tree_weather.getDepth() << endl;
+        avl_tree_weather.add(weather_vector[i]);
     }
 
     // Write to file
@@ -232,6 +235,7 @@ void splayTree() {
     const int number_tree = 101;
     int depth = 0; // Depth reference to be passed into find method
     vector<int> shuffled_vector;
+    vector<MarsWeather> shuffled_weather_vector;
     vector<MarsWeather> weather_vector;
     getWeather("mars-weather.csv", weather_vector);
 
@@ -242,16 +246,15 @@ void splayTree() {
     SplayTree<int> sp_tree(false);
     SplayTree<int> sp_tree_random(false);
 
+    // Own Type
+    SplayTree<MarsWeather> sp_tree_weather_false_one(false);
+    SplayTree<MarsWeather> sp_tree_weather_false_two(false);
+    SplayTree<MarsWeather> sp_tree_weather_true_one(true);
+    SplayTree<MarsWeather> sp_tree_weather_true_two(true);
+
     for (int i = 1; i < number_tree; ++i) {
         sp_tree.add(i);
     }
-
-    cout << "\n" << sp_tree.find(20, depth) << endl;
-    cout << sp_tree.find(53, depth) << endl;
-    cout << sp_tree.find(77, depth) << endl;
-
-    // Showing 77 now at the top, returns 0 for depth
-    cout << sp_tree.find(77, depth) << endl;
 
     // Write to file
     ofstream file_sp_sequence;
@@ -263,6 +266,130 @@ void splayTree() {
         }
     }
     file_sp_sequence.close();
+
+
+    /**
+     * Random
+     */
+
+    // Adding 1 - 100 to vector
+    for (int i = 1; i < number_tree; ++i) {
+        shuffled_vector.push_back(i);
+    }
+
+    shuffle(shuffled_vector.begin(), shuffled_vector.end(), default_random_engine(random_num));
+
+    for (int i = 1; i < number_tree; ++i) {
+        sp_tree_random.add(i);
+    }
+
+    // Write to file, uses vector of random numbers to search randomly
+    ofstream file_sp_random;
+    file_sp_random.open("../sp_depth_random.txt");
+    if (file_sp_random) {
+        for (int i = 1; i < number_tree; ++i) {
+            sp_tree_random.find(shuffled_vector[i], depth);
+            file_sp_random << sp_tree_random.getDepth() << endl;
+        }
+    }
+    file_sp_random.close();
+
+    /**
+     * Own Type
+     *
+     */
+
+
+    // For Sequential Searches
+    for (int i = 0; i < weather_vector.size(); ++i) {
+        sp_tree_weather_false_one.add(weather_vector[i]);
+    }
+
+    // Write to file
+    ofstream file_weather_false_one;
+    file_weather_false_one.open("../sp_depth_weather_sequential_false.txt");
+    if (file_weather_false_one) {
+        for (int i = 0; i < weather_vector.size(); ++i ) {
+
+            sp_tree_weather_false_one.find(weather_vector[i], depth);
+            file_weather_false_one << sp_tree_weather_false_one.getDepth() << endl;
+
+        }
+    }
+    file_weather_false_one.close();
+
+    for (int i = 0; i < weather_vector.size(); ++i) {
+        sp_tree_weather_true_one.add(weather_vector[i]);
+    }
+
+    // Write to file
+    ofstream file_weather_true_one;
+    file_weather_true_one.open("../sp_depth_weather_sequential_true.txt");
+    if (file_weather_true_one) {
+        for (int i = 0; i < weather_vector.size(); ++i ) {
+
+            sp_tree_weather_true_one.find(weather_vector[i], depth);
+            file_weather_true_one << sp_tree_weather_true_one.getDepth() << endl;
+
+        }
+    }
+    file_weather_true_one.close();
+
+
+
+    /**
+     *
+     *
+     * Weather Random
+     *
+     *
+     */
+
+    // For Random Searches
+
+    for (int i = 0; i < weather_vector.size(); ++i) {
+        sp_tree_weather_false_two.add(weather_vector[i]);
+    }
+
+    // Adding 1 - 100 to vector
+    for (int i = 1; i < weather_vector.size(); ++i) {
+        shuffled_weather_vector.push_back(weather_vector[i]);
+    }
+
+    shuffle(shuffled_weather_vector.begin(), shuffled_weather_vector.end(), default_random_engine(random_num));
+
+
+    // Write to file
+    ofstream file_weather_false_two;
+    file_weather_false_two.open("../sp_depth_weather_random_false.txt");
+    if (file_weather_false_two) {
+        for (int i = 0; i < weather_vector.size(); ++i ) {
+
+            sp_tree_weather_false_two.find(shuffled_weather_vector[i], depth);
+            file_weather_false_two << sp_tree_weather_false_two.getDepth() << endl;
+
+        }
+    }
+    file_weather_false_two.close();
+
+    for (int i = 0; i < weather_vector.size(); ++i) {
+        sp_tree_weather_true_two.add(weather_vector[i]);
+    }
+
+    // Write to file
+    ofstream file_weather_true_two;
+    file_weather_true_two.open("../sp_depth_weather_random_true.txt");
+    if (file_weather_true_two) {
+        for (int i = 0; i < weather_vector.size(); ++i ) {
+
+            sp_tree_weather_true_two.find(shuffled_weather_vector[i], depth);
+            file_weather_true_two << sp_tree_weather_true_two.getDepth() << endl;
+
+        }
+    }
+    file_weather_true_two.close();
+
+
 
 }
 
