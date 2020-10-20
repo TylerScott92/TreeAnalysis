@@ -6,6 +6,9 @@
 template <typename Comparable>
 class SplayTree {
 private:
+
+    mutable int depth_value;
+
     struct SplayNode {
         Comparable value;
         SplayNode* leftChild;
@@ -136,18 +139,19 @@ private:
         }
         if (c < n->value) {
             depth += 1;
-            std::cout << depth << std::endl;
             // Value is less than current node. Go to node's left child.
             return find(c, n->leftChild, depth);
         }
         if (n->value < c) {
             depth += 1;
-            std::cout << depth << std::endl;
             // Value is greater than current node. Go to node's right child.
             return find(c, n->rightChild, depth);
         }
+
         // If code reaches here, c == n->value. Node found!
         splay(n);
+        std::cout << depth << std::endl;
+        depth_value = depth;
         return true;
     }
 
@@ -227,6 +231,10 @@ public:
     ~SplayTree() {
         // calls private helper function
         destroy(root);
+    }
+
+    int getDepth () {
+        return depth_value;
     }
 
     // Method to destroy tree

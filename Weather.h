@@ -172,22 +172,6 @@ public:
         return outs;
     }
 
-    //friend bool operator == (const MarsWeather &lhs, const MarsWeather &rhs) {
-        // Use the unique field to determine if the two objects are equal
-    //    return lhs.id == rhs.id;
-    //}
-
-    //friend bool operator == (const MarsWeather &lhs, const MarsWeather &rhs) {
-        // Use the unique field to determine if the two objects are equal
-    //    return lhs.month == rhs.month;
-    //}
-
-    //friend bool operator == (const MarsWeather &lhs, const MarsWeather &rhs) {
-        // Use the unique field to determine if the two objects are equal
-    //    return lhs.t_date == rhs.month;
-    //}
-
-
 };
 
 /*

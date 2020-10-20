@@ -7,6 +7,9 @@
 template <typename Comparable>
 class AVLTree {
 private:
+
+    mutable int depth_value;
+
     struct AVLNode {
         Comparable value;
         AVLNode* leftChild;
@@ -52,7 +55,7 @@ private:
             return find(c, n->rightChild, depth);
         }
 
-        std::cout << depth << std::endl;
+        depth_value = depth;
         // If code reaches here, c == n->value. Node found!
         return true;
     }
@@ -203,6 +206,10 @@ public:
     ~AVLTree() {
         // calls private helper function
         destroy(root);
+    }
+
+    int getDepth() {
+        return depth_value;
     }
 
     // Method to destroy tree
