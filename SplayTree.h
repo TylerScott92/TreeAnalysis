@@ -134,6 +134,7 @@ private:
     // Helper recursive function to find a value in the tree.
     bool find(const Comparable &c, SplayNode* &n, int depth) {
         if (n == nullptr) {
+            depth_value = depth;
             // Reached a dead end. Value not in tree.
             return false;
         }
@@ -150,7 +151,6 @@ private:
 
         // If code reaches here, c == n->value. Node found!
         splay(n);
-        std::cout << depth << std::endl;
         depth_value = depth;
         return true;
     }

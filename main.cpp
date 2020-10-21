@@ -71,6 +71,15 @@ void binaryTree() {
         bs_tree.add(i);
     }
 
+    // Checking 0, 101, and 102
+    cout << "Return value and depth of 0 \n" << bs_tree.find(0, depth) << endl;
+    cout << bs_tree.getDepth() << "\n" << endl;
+    cout << "Return value and depth of 101 \n" << bs_tree.find(101, depth) << endl;
+    cout << bs_tree.getDepth() << "\n" << endl;
+    cout << "Return value and depth of 102 \n" << bs_tree.find(102, depth) << endl;
+    cout << bs_tree.getDepth() << "\n" << endl;
+
+
     // Write to file
     ofstream file_sequence;
     file_sequence.open("../bs_depth.txt");
