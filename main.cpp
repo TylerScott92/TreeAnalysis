@@ -1,11 +1,9 @@
 #include "AVLTree.h"
 #include "BinarySearchTree.h"
-#include "Node.h"
 #include "SplayTree.h"
 #include "Weather.h"
 #include <algorithm>
 #include <chrono>
-#include <fstream>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -18,11 +16,11 @@ void splayTree();
 
 int main() {
 
-    //binaryTree();
+    binaryTree();
 
     //avlTree();
 
-    splayTree();
+    //splayTree();
 
 
 
@@ -351,6 +349,7 @@ void splayTree() {
         sp_tree_weather_false_two.add(weather_vector[i]);
     }
 
+
     // Adding 1 - 100 to vector
     for (int i = 1; i < weather_vector.size(); ++i) {
         shuffled_weather_vector.push_back(weather_vector[i]);
@@ -365,12 +364,15 @@ void splayTree() {
     if (file_weather_false_two) {
         for (int i = 0; i < weather_vector.size(); ++i ) {
 
-            sp_tree_weather_false_two.find(shuffled_weather_vector[i], depth);
-            file_weather_false_two << sp_tree_weather_false_two.getDepth() << endl;
-
+            for (int j = 0; j < 5; ++j) {
+                sp_tree_weather_false_two.find(shuffled_weather_vector[i], depth);
+                file_weather_false_two << sp_tree_weather_false_two.getDepth() << endl;
+            }
         }
     }
     file_weather_false_two.close();
+
+
 
     for (int i = 0; i < weather_vector.size(); ++i) {
         sp_tree_weather_true_two.add(weather_vector[i]);
@@ -381,6 +383,7 @@ void splayTree() {
     file_weather_true_two.open("../sp_depth_weather_random_true.txt");
     if (file_weather_true_two) {
         for (int i = 0; i < weather_vector.size(); ++i ) {
+
 
             sp_tree_weather_true_two.find(shuffled_weather_vector[i], depth);
             file_weather_true_two << sp_tree_weather_true_two.getDepth() << endl;

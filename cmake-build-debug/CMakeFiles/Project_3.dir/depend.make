@@ -3,7 +3,6 @@
 
 CMakeFiles/Project_3.dir/main.cpp.obj: ../AVLTree.h
 CMakeFiles/Project_3.dir/main.cpp.obj: ../BinarySearchTree.h
-CMakeFiles/Project_3.dir/main.cpp.obj: ../Node.h
 CMakeFiles/Project_3.dir/main.cpp.obj: ../SplayTree.h
 CMakeFiles/Project_3.dir/main.cpp.obj: ../Weather.h
 CMakeFiles/Project_3.dir/main.cpp.obj: ../main.cpp
