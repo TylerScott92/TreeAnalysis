@@ -9,6 +9,7 @@ template <typename Comparable>
 class BinarySearchTree {
 private:
 
+    // Holds value for getDepth()
     mutable int depth_value;
 
     struct BinaryNode {
@@ -136,6 +137,10 @@ public:
         destroy(root);
     }
 
+    /**
+     getDepth() Retrieves current depth
+     @return Returns depth_value
+    */
     int getDepth() {
         return depth_value;
     }

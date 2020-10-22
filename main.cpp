@@ -1,3 +1,12 @@
+/*
+    Tyler Scott
+    Mars Weather (Project 3)
+    *****************************
+    Binary, AVL, and Splay Trees
+    - Experimenting with different tree data structures of varying data types
+
+*/
+
 #include "AVLTree.h"
 #include "BinarySearchTree.h"
 #include "SplayTree.h"
@@ -9,14 +18,17 @@
 #include <vector>
 using namespace std;
 
-// Function definitions under main
+// Declaring functions
 void binaryTree();
 void avlTree();
 void splayTree();
 
+/**
+    Main is only calling functions; definitions underneath
+ */
 int main() {
 
-    binaryTree();
+    //binaryTree();
 
     //avlTree();
 
@@ -27,32 +39,30 @@ int main() {
     return 0;
 }
 
+/**
+    Overloaded Operators
+*/
+
 bool operator > (const MarsWeather &a, const MarsWeather &b) {
 
-    //Use the unique field to determine if the two objects are equal
     return a.getSol() > a.getSol();
 }
 
 bool operator < (const MarsWeather &a, const MarsWeather &b) {
 
-    //Use the unique field to determine if the two objects are equal
     return b.getSol() < a.getSol();
 }
 
 bool operator == (const MarsWeather &a, const MarsWeather &b) {
 
-    //Use the unique field to determine if the two objects are equal
     return b.getSol() == a.getSol();
 }
 
+/**
+    All Binary Tree Code
+*/
+
 void binaryTree() {
-    /*********************
-   *
-   *
-   * Variables 'n Stuff
-   *
-   *
-   ********************/
 
     unsigned random_num = chrono::system_clock::now().time_since_epoch().count();
     const int number_tree = 101;
@@ -143,14 +153,11 @@ void binaryTree() {
 
 }
 
+/**
+    All AVL Tree Code
+*/
+
 void avlTree() {
-    /*********************
- *
- *
- * Variables 'n Stuff
- *
- *
- ********************/
 
     unsigned random_num = chrono::system_clock::now().time_since_epoch().count();
     const int number_tree = 101;
@@ -159,11 +166,7 @@ void avlTree() {
     vector<MarsWeather> weather_vector;
     getWeather("mars-weather.csv", weather_vector);
 
-    /**
-     * AVL Tree
-     */
-
-    // Testing AVL Tree methods
+    // Create AVL Trees
     AVLTree<int> avl_tree;
     AVLTree<int> avl_tree_random;
     AVLTree<MarsWeather> avl_tree_weather;
@@ -235,6 +238,9 @@ void avlTree() {
 }
 
 
+/**
+    All Splay Tree Code
+*/
 
 void splayTree() {
 
@@ -246,19 +252,14 @@ void splayTree() {
     vector<MarsWeather> weather_vector;
     getWeather("mars-weather.csv", weather_vector);
 
-    /**
-     * Splay Tree
-     */
-
     SplayTree<int> sp_tree(false);
     SplayTree<int> sp_tree_random(false);
-
-    // Own Type
     SplayTree<MarsWeather> sp_tree_weather_false_one(false);
     SplayTree<MarsWeather> sp_tree_weather_false_two(false);
     SplayTree<MarsWeather> sp_tree_weather_true_one(true);
     SplayTree<MarsWeather> sp_tree_weather_true_two(true);
 
+    // Add 1 - 100
     for (int i = 1; i < number_tree; ++i) {
         sp_tree.add(i);
     }
@@ -302,6 +303,7 @@ void splayTree() {
     file_sp_random.close();
 
     /**
+     *
      * Own Type
      *
      */
@@ -341,16 +343,6 @@ void splayTree() {
         }
     }
     file_weather_true_one.close();
-
-
-
-    /**
-     *
-     *
-     * Weather Random
-     *
-     *
-     */
 
     // For Random Searches
 
@@ -394,9 +386,10 @@ void splayTree() {
         for (int i = 0; i < weather_vector.size(); ++i ) {
 
 
-            sp_tree_weather_true_two.find(shuffled_weather_vector[i], depth);
-            file_weather_true_two << sp_tree_weather_true_two.getDepth() << endl;
-
+            for (int j = 0; j < 5; ++j) {
+                sp_tree_weather_true_two.find(shuffled_weather_vector[i], depth);
+                file_weather_true_two << sp_tree_weather_true_two.getDepth() << endl;
+            }
         }
     }
     file_weather_true_two.close();

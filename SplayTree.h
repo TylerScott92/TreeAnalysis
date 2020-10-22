@@ -7,6 +7,7 @@ template <typename Comparable>
 class SplayTree {
 private:
 
+    // Holds value for getDepth()
     mutable int depth_value;
 
     struct SplayNode {
@@ -233,6 +234,10 @@ public:
         destroy(root);
     }
 
+    /**
+      getDepth() Retrieves current depth
+      @return Returns depth_value
+     */
     int getDepth () {
         return depth_value;
     }
